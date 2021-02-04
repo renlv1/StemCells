@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 import fetch from '@/api/api'
 
 Vue.use(Vuex)
-
+/*eslint-disable*/
 export default new Vuex.Store({
   state: {
     user: {},
@@ -17,9 +17,13 @@ export default new Vuex.Store({
     unRead: false,
     currentNews: null,
     bankList: [],
+	  systemStatus: '',
     device: Number
   },
   mutations: {
+	  SET_SystemStatus (state, data) {
+		  state.systemStatus = data
+	  },
     SET_ACCOUNT (state, data) {
       state.user = data
     },
@@ -55,7 +59,8 @@ export default new Vuex.Store({
     getUserInfo ({commit}) {
       fetch.post('/user/queryUserInfo').then(res => {
         if (res.success) {
-          commit('SET_ACCOUNT', res.data.user)
+	        commit('SET_ACCOUNT', res.data.user)
+	        commit('SET_SystemStatus', res.data.systemstatus)
         }
       })
     },

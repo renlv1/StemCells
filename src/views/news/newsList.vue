@@ -49,7 +49,7 @@
       <div class="list" :class="{diff: diffShow}">
         <div class="item" :class="{check: selectedNewsList.includes(item.newsId)}" v-for="(item, index) in list" :key="index">
           <i v-if="diffShow" class="el-icon-check" @click="selectNews(item.newsId)"></i>
-          <div class="img pointer" @click="jump(item)" :style="`background-image:url(${item.fileCover || item.imgUrl[0] || require(`@img/empty_img_${$lang}.png`)})`">
+          <div class="img pointer" @click="jump(item)" :style="`background-image:url(${item.fileCover || item.imgUrl[0] || require(`@img/empty_img_${$lang}1.png`)})`">
             <i class="el-icon-video-play" v-if="item.fileType === 2"></i>
           </div>
           <div class="content">

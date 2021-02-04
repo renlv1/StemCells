@@ -30,6 +30,7 @@ import {
   TabPane,
   CheckboxGroup,
   Button,
+	Rate,
 } from 'element-ui'
 // collapse 展开折叠
 import CollapseTransition from 'element-ui/lib/transitions/collapse-transition';
@@ -62,6 +63,7 @@ Vue.use(Tabs)
 Vue.use(TabPane)
 Vue.use(TabPane)
 Vue.use(Button)
+Vue.use(Rate)
 
 Vue.prototype.$message = Message
 Vue.prototype.$alert = MessageBox.alert

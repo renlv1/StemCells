@@ -6,16 +6,16 @@
         <p>{{$store.state.showLoading !== true ? $store.state.showLoading : `${$lang === 'cn' ? '正在加载中...' : 'Loading...'}`}}</p>
       </div>
     </div>
-    <!--<web-nav class="nav" v-if="$store.state.user.id" />-->
-    <!--<transition name="zoom">
+    <web-nav class="nav" v-if="$store.state.user.id" />
+    <transition name="zoom">
       <keep-alive>
         <router-view class="main-container" v-if="$route.meta.keepAlive" />
       </keep-alive>
     </transition>
     <transition name="zoom">
       <router-view class="main-container" v-if="!$route.meta.keepAlive" />
-    </transition>-->
-      <router-view class="main-container"/>
+    </transition>
+<!--      <router-view class="main-container"/>-->
   </div>
 </template>
 <script>
@@ -28,7 +28,7 @@ export default {
     }
   },
   created () {
-   // this.$store.dispatch('getUserInfo')
+   this.$store.dispatch('getUserInfo')
   },
   mounted(){
     let u = navigator.userAgent
@@ -46,7 +46,7 @@ export default {
     }
   },
   components: {
-    //webNav: require('@/components/nav').default,
+    webNav: require('@/components/nav').default,
   },
 }
 </script>
@@ -93,7 +93,7 @@ export default {
     justify-content: center;
     color: #fff;
     border-radius: 10px;
-    padding-bottom: 0.2rem;
+    padding: 0.2rem 0;
   }
 
   img{

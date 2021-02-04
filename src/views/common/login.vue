@@ -57,6 +57,7 @@
 
 <script>
 import QRCode from 'qrcodejs2'
+/*eslint-disable*/
 export default {
   data() {
     return {
@@ -142,27 +143,32 @@ export default {
     submit () {
       this.loading = true
       this.$fetch.post('/user/applogin', {
-        /*phoneCode: '86',*/
+        phoneCode: '86',
         mobile: this.userName,
         password: this.password,
-        /*deviceId: '123456',
+        deviceId: '123456',
         clientType: 5,
-        clientVersion:	'1.0.0'*/
+        clientVersion:	'1.0.0'
       }).then(res => {
         this.loading = false
         if (res.success) {
           localStorage.setItem('userName', this.userName)
-          this.$store.commit('SET_ACCOUNT', res.data.user)
-          if (res.data.user.newsStatus === 0) {
-            this.$router.replace('/auth')
+	        this.$store.commit('SET_ACCOUNT', res.data.user)
+          if (res.data.systemstatus) {
+	          this.$store.commit('SET_SystemStatus', res.data.systemstatus)
           } else {
-            this.$store.dispatch('getFolderList')
-            if (this.isPC) {
-              this.$router.replace('/home')
-            } else {
-              this.$router.replace('/news/newsList')
-            }
+	          this.$store.commit('SET_SystemStatus', '')
           }
+	        if (res.data.user.newsStatus === 0) {
+		        this.$router.replace('/auth')
+	        } else {
+		        this.$store.dispatch('getFolderList')
+		        if (this.isPC) {
+			        this.$router.replace('/home')
+		        } else {
+			        this.$router.replace('/news/newsList')
+		        }
+	        }
         }
       })
     },

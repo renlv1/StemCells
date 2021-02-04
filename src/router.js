@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 Vue.use(Router)
-
+/*eslint-disable*/
 const router = new Router({
   linkActiveClass: 'active',
   routes: [
@@ -34,7 +34,7 @@ const router = new Router({
       path: '/news/newsList',
       component: require('./views/news/newsList').default,
       meta: {
-        keepAlive: true
+        // keepAlive: true
       }
     },
     {
@@ -87,7 +87,39 @@ const router = new Router({
       path: '/notice/noticeDetail',
       component: require('./views/notice/noticeDetail').default
     },
-    /*{
+	  {
+		  path: '/org/orgIndex', // 机构管理
+		  component: require('./views/org/org').default
+	  },
+	  {
+		  path: '/org/orgIndex/orgAdd', // 机构管理 -- 添加机构
+		  component: require('./views/org/orgAdd').default
+	  },
+	  {
+		  path: '/org/service', // 服务管理
+		  component: require('./views/org/service').default
+	  },
+	  {
+		  path: '/org/service/serviceDetail', // 服务管理 ---> 服务详情
+		  component: require('./views/org/serviceDetail').default
+	  },
+	  {
+		  path: '/org/label', // 标签管理
+		  component: require('./views/org/label').default
+	  },
+	  {
+		  path: '/org/label/labelDetail', // 标签管理 --> 标签管理详情
+		  component: require('./views/org/labelDetail').default
+	  },
+	  {
+		  path: '/org/community', // 公开课
+		  component: require('./views/org/community').default
+	  },
+	  {
+		  path: '/org/community/communityDetails', // 公开课 -- 详情
+		  component: require('./views/org/communityDetails').default
+	  },
+    {
       path: '/',
       redirect: '/release/release'
     },
@@ -103,7 +135,7 @@ const router = new Router({
     {
       path: '/details/details',
       component: require('./views/details/details').default
-    }*/
+    }
   ],
   scrollBehavior (to, from, savedPosition) {
     // 从新闻详情回到新闻列表保持滚动条的位置

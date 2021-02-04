@@ -30,6 +30,7 @@
 </template>
 
 <script>
+  /*eslint-disable*/
   import Dialog from '@/components/dialog/dialog'
   export default {
     data() {
@@ -168,7 +169,7 @@
                 color: #4081ff;
                 text-align: right;
             }
-        }   
+        }
         .user{
             position: fixed;
             left: 15px;
@@ -255,7 +256,7 @@
                             max-width: 100%;
                         }
                     }
-                }   
+                }
             }
         }
         .footer{

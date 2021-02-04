@@ -1,3 +1,4 @@
+/*eslint-disable*/
 export default {
   methods: {
     $status2text (status, isRecharge) {
@@ -73,6 +74,10 @@ export default {
         }
       }
       return statusText
-    }
+    },
+	  $empty (text) {
+    	if (text) return text
+		  return  '-'
+	  },
   }
 }

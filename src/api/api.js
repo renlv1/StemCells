@@ -39,11 +39,18 @@ export default {
       })
     })
   },
+	/*eslint-disable*/
   post: (url, params) => {
     if (params && params.loading === true) {
       delete params.loading
       store.commit('SET_LOADING', true)
     }
+	  // 删除参数值为空的参数
+	  for (let i in params) {
+		  if(params[i] === '') {
+			  delete params[i]
+		  }
+	  }
     return new Promise((resolve, reject) => {
       ax({
         method: 'post',
@@ -56,6 +63,35 @@ export default {
       })
     })
   },
+
+	postArr: (url, params) => {
+		if (params && params.loading) {
+			store.commit('SET_LOADING', params.loading)
+			delete params.loading
+		}
+
+		// 删除参数值为空的参数
+		for (let i in params) {
+			if(params[i] === '') {
+				delete params[i]
+			}
+		}
+
+		return new Promise((resolve, reject) => {
+			ax({
+				method: 'post',
+				url,
+				data: params,
+				paramsSerializer: function(params) {
+					return qs.stringify(params, {arrayFormat: 'repeat'})
+				}
+			}).then(res => {
+				resolve(res.data)
+			}).catch(err => {
+				reject(err)
+			})
+		})
+	},
   post2: (url, params, cancelToken) => { // 可以取消的请求
     return new Promise((resolve, reject) => {
       ax({

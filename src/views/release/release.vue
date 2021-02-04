@@ -30,6 +30,7 @@
 </template>
 
 <script>
+  /*eslint-disable*/
   import Dialog from '@/components/dialog/dialog'
 
   import 'quill/dist/quill.core.css'
@@ -154,8 +155,8 @@
         };
       },
       getDataObj (obj) { // 客户端进入编辑渲染
-        /*headImage 用户头像url字符串   
-        userName: 用户名   
+        /*headImage 用户头像url字符串
+        userName: 用户名
         title :文章标题
         htmlStr : 富文本内容
         publishTime :发布时间*/
@@ -242,7 +243,7 @@
         }
         this.myfile1 = imgObj
         this.isLoading = true
-        
+
         let formData = new FormData()
         formData.append('myfile', this.myfile1)
         this.$fetch.postFormdata(`${this.$api}/uploadfile/uploadimg`, formData).then((res) => {
@@ -383,12 +384,12 @@
           right: 15px;
           z-index: 900; // 定位........
           top: 46px;
-          .iosx & {  
+          .iosx & {
               top: 86px;
           }
           .ios & {
               top: 66px;
-          } 
+          }
             .input-text{
                 width: 100%;
                 height: 100%;
@@ -412,10 +413,10 @@
             }
       /deep/.quill-editor{
                 height: calc(100vh - 243px);
-                .iosx & {  
+                .iosx & {
                     height: calc(100vh - 351px);
                 }
-                .ios & {  
+                .ios & {
                     height: calc(100vh - 304px);
                 }
                 /deep/.ql-toolbar{
@@ -513,7 +514,7 @@
                 transform: translate(-50%,-50%);
             }
         }
-        #rich-text /deep/ *{  
+        #rich-text /deep/ *{
             -webkit-user-select:text !important;
         }
     }

@@ -32,7 +32,7 @@
         </div>
       </div>
       <div class="u">
-        <div class="dl" v-for="(item, index) in $t('common.nav')" :key="index" @click="activeIndex = index">
+        <div class="dl" v-for="(item, index) in navArr" :key="index" @click="activeIndex = index">
           <div class="dt" @click="handle(item)" :class="{active: activeIndex === index}">
             <img :src="require(`@img/nav_icon_${index}.png`)" alt="">
             <span class="f1">{{item.text}}</span>
@@ -98,6 +98,7 @@
 </template>
 
 <script>
+/*eslint-disable*/
 export default {
   data () {
     return {
@@ -106,7 +107,8 @@ export default {
       isShowMenu: false,
       smallNav: false,
       showChild: false,
-      hideMenu: false
+      hideMenu: false,
+      navArr: []
     }
   },
   computed: {
@@ -131,6 +133,38 @@ export default {
     this.$store.dispatch('getUnReadMessage')
     this.$store.dispatch('getBalance')
     this.$store.dispatch('getBankList')
+    let dataArr = [
+	    {
+		    text: '机构管理',
+		    url: '/org/orgIndex',
+		    children: [
+			    {
+				    text: '机构管理',
+				    url: '/org/orgIndex'
+			    },
+			    {
+				    text: '服务管理',
+				    url: '/org/service'
+			    },
+			    {
+				    text: '标签管理',
+				    url: '/org/label'
+			    },
+			    {
+				    text: '公开课',
+				    url: '/org/community'
+			    },
+		    ]
+	    }
+    ]
+	  // this.navArr = this.$t('common.nav').concat(dataArr)
+    setTimeout(() => {
+	    if (this.$store.state.systemStatus === 1) {
+		    this.navArr = this.$t('common.nav').concat(dataArr)
+	    } else {
+		    this.navArr = this.$t('common.nav')
+	    }
+    }, 2000)
   },
   methods: {
     switchLang (lang) {
@@ -155,7 +189,7 @@ export default {
       item.url && this.$router.push(item.url)
     },
     logout () {
-      this.$confirm(this.$lang === 'cn' ? '确认退出登陆吗？' : 'Are you sure you want to log out?').then(() => {
+      this.$confirm(this.$lang.toLowerCase() === 'cn' ? '确认退出登陆吗？' : 'Are you sure you want to log out?').then(() => {
         this.$fetch.post('/user/logout').then(res => {
           if (res.success) {
             window.refreshList = true

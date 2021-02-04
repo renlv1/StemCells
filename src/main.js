@@ -38,6 +38,12 @@ Vue.prototype.$toastD = function (text) {
   this.toast.show()
 }
 
+import BaiduMap from 'vue-baidu-map'
+
+Vue.use(BaiduMap, {
+	ak: 'NqYwtHbrPbvKFAorAUdrYcvIwg3f1qAt'
+})
+
 Vue.prototype.$fetch = fetch
 Vue.prototype.$lang = localStorage.getItem('lang') || 'cn'
 Vue.prototype.$api = process.env.VUE_APP_BASE_PATH

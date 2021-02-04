@@ -1,4 +1,5 @@
 export default {
+	/*eslint-disable*/
   common: {
     nav: [
       {
@@ -57,7 +58,7 @@ export default {
             url: '/notice/notice'
           },
         ]
-      }
+      },
     ],
     timeArr: ['全部', '近7日', '近30日'],
     empty: '暂无数据',

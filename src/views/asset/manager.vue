@@ -199,6 +199,8 @@ export default {
       td{
         height: 50px;
         padding-left: 30px;
+        padding-top: 20px;
+        padding-bottom: 0;
       }
       tr{
         border-bottom: 1px solid #e9e9e9;

@@ -349,6 +349,7 @@ export default {
       text-align: center;
       td{
         height: 60px;
+        line-height: 60px;
       }
       tr{
         border-bottom: 1px solid #e9e9e9;
